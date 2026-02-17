@@ -11,21 +11,20 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #0a0a0f; --surface: #111118; --surface2: #1a1a24;
-      --border: rgba(255,255,255,0.07); --gold: #c9a84c; --gold-light: #e8c97a;
-      --green: #3ecf8e; --text: #f0ede6; --text-muted: rgba(240,237,230,0.45);
-      --text-dim: rgba(240,237,230,0.2); --danger: #ff5c5c;
-      --shadow: rgba(0,0,0,0.3); --radius: 16px;
+      --bg:#0a0a0f; --surface:#111118; --surface2:#1a1a24;
+      --border:rgba(255,255,255,0.07); --gold:#c9a84c; --gold-light:#e8c97a;
+      --green:#3ecf8e; --text:#f0ede6; --text-muted:rgba(240,237,230,0.45);
+      --text-dim:rgba(240,237,230,0.2); --danger:#ff5c5c;
+      --shadow:rgba(0,0,0,0.3); --radius:16px;
     }
     html.light {
-      --bg: #f5f2ec; --surface: #ffffff; --surface2: #ede9e1;
-      --border: rgba(0,0,0,0.08); --gold: #a07828; --gold-light: #b8892e;
-      --green: #1a9e6a; --text: #1a1612; --text-muted: rgba(26,22,18,0.5);
-      --text-dim: rgba(26,22,18,0.25); --danger: #d93c3c;
-      --shadow: rgba(0,0,0,0.08);
+      --bg:#f5f2ec; --surface:#ffffff; --surface2:#ede9e1;
+      --border:rgba(0,0,0,0.08); --gold:#a07828; --gold-light:#b8892e;
+      --green:#1a9e6a; --text:#1a1612; --text-muted:rgba(26,22,18,0.5);
+      --text-dim:rgba(26,22,18,0.25); --danger:#d93c3c; --shadow:rgba(0,0,0,0.08);
     }
     * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
-    html, body {
+    html,body {
       height:100%; background:var(--bg); color:var(--text);
       font-family:'Syne',sans-serif; overscroll-behavior:none;
       transition:background 0.3s ease, color 0.3s ease;
@@ -37,40 +36,22 @@
     }
 
     /* ── LOADER ── */
-    .loader-screen {
-      flex:1; display:flex; flex-direction:column;
-      align-items:center; justify-content:center; gap:16px;
-    }
+    .loader-screen { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px; }
     .loader-screen.hidden { display:none; }
     .loader-logo { font-size:12px; font-weight:700; letter-spacing:0.25em; text-transform:uppercase; color:var(--gold); }
-    .loader-spinner {
-      width:28px; height:28px; border:2px solid var(--border);
-      border-top-color:var(--gold); border-radius:50%;
-      animation:spin 0.8s linear infinite;
-    }
+    .loader-spinner { width:28px; height:28px; border:2px solid var(--border); border-top-color:var(--gold); border-radius:50%; animation:spin 0.8s linear infinite; }
     @keyframes spin { to { transform:rotate(360deg); } }
     .loader-text { font-family:'DM Mono',monospace; font-size:11px; color:var(--text-muted); }
 
     /* ── PROFILE SCREEN ── */
-    .profile-screen {
-      flex:1; display:flex; flex-direction:column;
-      align-items:center; justify-content:center; padding:40px 24px; gap:28px;
-    }
+    .profile-screen { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:40px 24px; gap:28px; }
     .profile-screen.hidden { display:none; }
     .profile-logo { font-size:12px; font-weight:700; letter-spacing:0.25em; text-transform:uppercase; color:var(--gold); }
     .profile-subtitle { font-family:'DM Mono',monospace; font-size:13px; color:var(--text-muted); margin-top:-12px; }
     .profile-cards { display:flex; flex-direction:column; gap:14px; width:100%; max-width:320px; }
-    .profile-card {
-      background:var(--surface); border:1px solid var(--border); border-radius:20px;
-      padding:22px 24px; display:flex; align-items:center; gap:18px; cursor:pointer;
-      box-shadow:0 2px 12px var(--shadow); transition:transform 0.15s, opacity 0.15s;
-    }
+    .profile-card { background:var(--surface); border:1px solid var(--border); border-radius:20px; padding:22px 24px; display:flex; align-items:center; gap:18px; cursor:pointer; box-shadow:0 2px 12px var(--shadow); transition:transform 0.15s, opacity 0.15s; }
     .profile-card:active { transform:scale(0.97); opacity:0.85; }
-    .profile-avatar {
-      width:50px; height:50px; border-radius:50%;
-      display:flex; align-items:center; justify-content:center;
-      font-size:20px; font-weight:800; flex-shrink:0;
-    }
+    .profile-avatar { width:50px; height:50px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:20px; font-weight:800; flex-shrink:0; }
     .avatar-seb     { background:linear-gradient(135deg,#c9a84c,#e8c97a); color:#0a0a0f; }
     .avatar-pauline { background:linear-gradient(135deg,#3ecf8e,#7de8b8); color:#0a0a0f; }
     .profile-info { flex:1; }
@@ -85,191 +66,122 @@
     /* ── HEADER ── */
     .header { padding:16px 20px 0; display:flex; justify-content:space-between; align-items:center; }
     .header-left { display:flex; align-items:center; gap:10px; }
-    .btn-back {
-      background:var(--surface2); border:1px solid var(--border); border-radius:50%;
-      width:32px; height:32px; display:flex; align-items:center; justify-content:center;
-      cursor:pointer; font-size:14px; color:var(--text-muted); transition:background 0.2s;
-    }
+    .btn-back { background:var(--surface2); border:1px solid var(--border); border-radius:50%; width:32px; height:32px; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:14px; color:var(--text-muted); }
     .btn-back:active { opacity:0.7; }
     .header-user { display:flex; align-items:center; gap:8px; }
-    .header-avatar {
-      width:26px; height:26px; border-radius:50%;
-      display:flex; align-items:center; justify-content:center;
-      font-size:11px; font-weight:800;
-    }
+    .header-avatar { width:26px; height:26px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; }
     .header-username { font-size:13px; font-weight:700; }
     .header-right { display:flex; align-items:center; gap:10px; }
     .header-date { font-family:'DM Mono',monospace; font-size:10px; color:var(--text-muted); }
-    .theme-toggle {
-      background:var(--surface2); border:1px solid var(--border); border-radius:20px;
-      padding:5px 10px; cursor:pointer; display:flex; align-items:center; gap:4px;
-      color:var(--text-muted); font-family:'DM Mono',monospace; font-size:10px; font-weight:500;
-      transition:background 0.3s, border-color 0.3s;
-    }
+    .theme-toggle { background:var(--surface2); border:1px solid var(--border); border-radius:20px; padding:5px 10px; cursor:pointer; display:flex; align-items:center; gap:4px; color:var(--text-muted); font-family:'DM Mono',monospace; font-size:10px; font-weight:500; transition:background 0.3s; }
     .theme-toggle:active { opacity:0.7; }
 
-    /* ── SYNC STATUS ── */
-    .sync-bar {
-      display:flex; align-items:center; gap:6px;
-      padding:6px 20px 0;
-      font-family:'DM Mono',monospace; font-size:10px; color:var(--text-dim);
-    }
-    .sync-dot {
-      width:6px; height:6px; border-radius:50%; background:var(--text-dim);
-      transition:background 0.3s;
-    }
+    /* ── SYNC ── */
+    .sync-bar { display:flex; align-items:center; gap:6px; padding:6px 20px 0; font-family:'DM Mono',monospace; font-size:10px; color:var(--text-dim); }
+    .sync-dot { width:6px; height:6px; border-radius:50%; background:var(--text-dim); transition:background 0.3s; }
     .sync-dot.synced  { background:var(--green); }
     .sync-dot.syncing { background:var(--gold); animation:pulse 1s infinite; }
     .sync-dot.error   { background:var(--danger); }
     @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
 
     /* ── SCROLL ── */
-    .scroll {
-      flex:1; overflow-y:auto; padding:12px 16px 120px;
-      display:flex; flex-direction:column; gap:14px;
-    }
+    .scroll { flex:1; overflow-y:auto; padding:12px 16px 120px; display:flex; flex-direction:column; gap:14px; }
 
     /* ── HERO ── */
-    .hero {
-      background:var(--surface); border:1px solid var(--border);
-      border-radius:var(--radius); padding:24px; position:relative; overflow:hidden;
-      box-shadow:0 2px 12px var(--shadow); transition:background 0.3s, border-color 0.3s;
-    }
-    .hero::before {
-      content:''; position:absolute; top:-60px; right:-60px; width:200px; height:200px;
-      background:radial-gradient(circle,rgba(201,168,76,0.12) 0%,transparent 70%); pointer-events:none;
-    }
+    .hero { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:24px; position:relative; overflow:hidden; box-shadow:0 2px 12px var(--shadow); transition:background 0.3s, border-color 0.3s; }
+    .hero::before { content:''; position:absolute; top:-60px; right:-60px; width:200px; height:200px; background:radial-gradient(circle,rgba(201,168,76,0.12) 0%,transparent 70%); pointer-events:none; }
     .hero-label { font-size:10px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--text-muted); margin-bottom:8px; }
     .hero-amount { font-family:'DM Mono',monospace; font-size:42px; font-weight:500; color:var(--gold-light); line-height:1; letter-spacing:-1px; margin-bottom:4px; }
     .hero-amount span { font-size:22px; opacity:0.6; }
     .hero-sub { font-family:'DM Mono',monospace; font-size:12px; color:var(--text-muted); margin-bottom:20px; }
     .hero-sub b { color:var(--green); font-weight:400; }
     .progress-track { height:6px; background:var(--surface2); border-radius:99px; overflow:hidden; margin-bottom:8px; }
-    .progress-fill {
-      height:100%; border-radius:99px;
-      background:linear-gradient(90deg,var(--gold),var(--gold-light));
-      transition:width 0.6s cubic-bezier(0.4,0,0.2,1); position:relative;
-    }
-    .progress-fill::after {
-      content:''; position:absolute; right:0; top:50%; transform:translateY(-50%);
-      width:10px; height:10px; border-radius:50%; background:var(--gold-light); box-shadow:0 0 8px var(--gold);
-    }
+    .progress-fill { height:100%; border-radius:99px; background:linear-gradient(90deg,var(--gold),var(--gold-light)); transition:width 0.6s cubic-bezier(0.4,0,0.2,1); position:relative; }
+    .progress-fill::after { content:''; position:absolute; right:0; top:50%; transform:translateY(-50%); width:10px; height:10px; border-radius:50%; background:var(--gold-light); box-shadow:0 0 8px var(--gold); }
     .progress-labels { display:flex; justify-content:space-between; font-family:'DM Mono',monospace; font-size:10px; color:var(--text-dim); }
     .progress-pct { font-weight:500; color:var(--gold); }
 
     /* ── STATS ── */
     .stats-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
-    .stat-card {
-      background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
-      padding:18px; box-shadow:0 2px 8px var(--shadow); transition:background 0.3s, border-color 0.3s;
-    }
+    .stat-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:18px; box-shadow:0 2px 8px var(--shadow); transition:background 0.3s, border-color 0.3s; }
     .stat-card.highlight { border-color:rgba(62,207,142,0.25); background:linear-gradient(135deg,var(--surface),rgba(62,207,142,0.04)); }
     .stat-label { font-size:9px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:var(--text-muted); margin-bottom:8px; }
     .stat-value { font-family:'DM Mono',monospace; font-size:20px; font-weight:500; color:var(--text); line-height:1; }
     .stat-value.green { color:var(--green); }
     .stat-sub { font-family:'DM Mono',monospace; font-size:10px; color:var(--text-dim); margin-top:4px; }
 
+    /* ── GRAPHIQUE ── */
+    .chart-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:20px; box-shadow:0 2px 12px var(--shadow); transition:background 0.3s, border-color 0.3s; }
+    .chart-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; }
+    .chart-title { font-size:9px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:var(--text-muted); }
+    .chart-total { font-family:'DM Mono',monospace; font-size:12px; color:var(--gold-light); }
+    .chart-wrap { position:relative; height:120px; }
+    canvas#chartCanvas { width:100%; height:100%; }
+    .chart-empty { text-align:center; padding:40px 0; font-family:'DM Mono',monospace; font-size:11px; color:var(--text-dim); }
+
     /* ── ESTIMATION ── */
-    .est-card {
-      background:var(--surface); border:1px solid rgba(201,168,76,0.2);
-      border-radius:var(--radius); padding:20px 24px; display:flex; align-items:center; gap:16px;
-      transition:background 0.3s;
-    }
+    .est-card { background:var(--surface); border:1px solid rgba(201,168,76,0.2); border-radius:var(--radius); padding:20px 24px; display:flex; align-items:center; gap:16px; transition:background 0.3s; }
     .est-icon { font-size:28px; flex-shrink:0; }
     .est-label { font-size:9px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--text-muted); margin-bottom:4px; }
     .est-date { font-family:'DM Mono',monospace; font-size:18px; color:var(--gold-light); font-weight:500; }
     .est-detail { font-family:'DM Mono',monospace; font-size:10px; color:var(--text-dim); margin-top:2px; }
 
     /* ── SECTION TITLE ── */
-    .section-title {
-      font-size:10px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase;
-      color:var(--text-muted); padding:0 4px; display:flex; align-items:center; gap:10px;
-    }
+    .section-title { font-size:10px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--text-muted); padding:0 4px; display:flex; align-items:center; gap:10px; }
     .section-title::after { content:''; flex:1; height:1px; background:var(--border); }
 
     /* ── HISTORY ── */
     .history-list { display:flex; flex-direction:column; gap:8px; }
-    .history-item {
-      background:var(--surface); border:1px solid var(--border); border-radius:12px;
-      padding:14px 18px; display:flex; align-items:center; justify-content:space-between;
-      animation:slideIn 0.3s ease; transition:background 0.3s, border-color 0.3s;
-    }
+    .history-item { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:14px 18px; display:flex; align-items:center; justify-content:space-between; animation:slideIn 0.3s ease; transition:background 0.3s, border-color 0.3s; }
     @keyframes slideIn { from{opacity:0;transform:translateY(-8px)} to{opacity:1;transform:translateY(0)} }
     .history-left { display:flex; flex-direction:column; gap:3px; }
     .history-date { font-family:'DM Mono',monospace; font-size:11px; color:var(--text-muted); }
     .history-note { font-size:12px; color:var(--text-dim); font-style:italic; }
     .history-amount { font-family:'DM Mono',monospace; font-size:16px; font-weight:500; color:var(--green); }
-    .history-delete {
-      background:none; border:none; color:var(--text-dim); font-size:16px;
-      padding:4px 8px; cursor:pointer; border-radius:8px;
-      transition:color 0.2s, background 0.2s; margin-left:10px;
-    }
+    .history-delete { background:none; border:none; color:var(--text-dim); font-size:16px; padding:4px 8px; cursor:pointer; border-radius:8px; transition:color 0.2s, background 0.2s; margin-left:10px; }
     .history-delete:active { color:var(--danger); background:rgba(255,92,92,0.1); }
     .empty-state { text-align:center; padding:30px; color:var(--text-dim); font-family:'DM Mono',monospace; font-size:12px; }
 
     /* ── FAB ── */
-    .fab {
-      position:fixed; bottom:calc(24px + env(safe-area-inset-bottom));
-      left:50%; transform:translateX(-50%); z-index:100; display:flex; gap:10px;
-    }
-    .btn-add {
-      background:var(--gold); color:#0a0a0f; border:none; border-radius:40px;
-      padding:16px 28px; font-family:'Syne',sans-serif; font-size:14px; font-weight:700;
-      cursor:pointer; box-shadow:0 4px 20px rgba(201,168,76,0.4); transition:all 0.2s; white-space:nowrap;
-    }
+    .fab { position:fixed; bottom:calc(24px + env(safe-area-inset-bottom)); left:50%; transform:translateX(-50%); z-index:100; display:flex; gap:10px; }
+    .btn-add { background:var(--gold); color:#0a0a0f; border:none; border-radius:40px; padding:16px 28px; font-family:'Syne',sans-serif; font-size:14px; font-weight:700; cursor:pointer; box-shadow:0 4px 20px rgba(201,168,76,0.4); transition:all 0.2s; white-space:nowrap; }
     .btn-add:active { transform:scale(0.96); }
-    .btn-settings {
-      background:var(--surface2); color:var(--text-muted); border:1px solid var(--border);
-      border-radius:40px; padding:16px 18px; font-size:18px; cursor:pointer; transition:all 0.2s;
-    }
+    .btn-settings { background:var(--surface2); color:var(--text-muted); border:1px solid var(--border); border-radius:40px; padding:16px 18px; font-size:18px; cursor:pointer; transition:all 0.2s; }
     .btn-settings:active { background:var(--surface); }
 
     /* ── OVERLAY / MODAL ── */
-    .overlay {
-      position:fixed; inset:0; background:rgba(0,0,0,0.7); backdrop-filter:blur(4px);
-      z-index:200; display:none; align-items:flex-end;
-    }
+    .overlay { position:fixed; inset:0; background:rgba(0,0,0,0.7); backdrop-filter:blur(4px); z-index:200; display:none; align-items:flex-end; }
     .overlay.open { display:flex; }
-    .modal {
-      width:100%; background:var(--surface); border-radius:24px 24px 0 0;
-      padding:12px 24px calc(32px + env(safe-area-inset-bottom));
-      animation:slideUp 0.3s cubic-bezier(0.4,0,0.2,1);
-      transition:background 0.3s; box-shadow:0 -4px 30px var(--shadow);
-    }
+    .modal { width:100%; background:var(--surface); border-radius:24px 24px 0 0; padding:12px 24px calc(32px + env(safe-area-inset-bottom)); animation:slideUp 0.3s cubic-bezier(0.4,0,0.2,1); transition:background 0.3s; box-shadow:0 -4px 30px var(--shadow); }
     @keyframes slideUp { from{transform:translateY(100%)} to{transform:translateY(0)} }
     .modal-handle { width:36px; height:4px; background:var(--border); border-radius:99px; margin:0 auto 20px; }
     .modal-title { font-size:18px; font-weight:700; margin-bottom:24px; }
     .field { margin-bottom:16px; }
     .field label { display:block; font-size:10px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:var(--text-muted); margin-bottom:8px; }
-    .field input {
-      width:100%; background:var(--surface2); border:1px solid var(--border); border-radius:12px;
-      padding:14px 16px; color:var(--text); font-family:'DM Mono',monospace; font-size:16px;
-      outline:none; transition:border-color 0.2s; -webkit-appearance:none;
-    }
+    .field input { width:100%; background:var(--surface2); border:1px solid var(--border); border-radius:12px; padding:14px 16px; color:var(--text); font-family:'DM Mono',monospace; font-size:16px; outline:none; transition:border-color 0.2s; -webkit-appearance:none; }
     .field input:focus { border-color:var(--gold); }
     .modal-btns { display:grid; grid-template-columns:1fr 2fr; gap:12px; margin-top:8px; }
-    .btn-cancel {
-      background:var(--surface2); border:1px solid var(--border); border-radius:12px;
-      padding:16px; color:var(--text-muted); font-family:'Syne',sans-serif; font-size:14px; font-weight:600; cursor:pointer;
-    }
-    .btn-confirm {
-      background:var(--gold); border:none; border-radius:12px; padding:16px; color:#0a0a0f;
-      font-family:'Syne',sans-serif; font-size:14px; font-weight:700; cursor:pointer;
-    }
+    .btn-cancel { background:var(--surface2); border:1px solid var(--border); border-radius:12px; padding:16px; color:var(--text-muted); font-family:'Syne',sans-serif; font-size:14px; font-weight:600; cursor:pointer; }
+    .btn-confirm { background:var(--gold); border:none; border-radius:12px; padding:16px; color:#0a0a0f; font-family:'Syne',sans-serif; font-size:14px; font-weight:700; cursor:pointer; }
     .btn-cancel:active { opacity:0.7; }
     .btn-confirm:active { opacity:0.85; }
     .settings-info { font-family:'DM Mono',monospace; font-size:11px; color:var(--text-muted); margin-bottom:20px; line-height:1.6; white-space:pre-line; }
     .danger-zone { margin-top:8px; padding:14px 16px; background:rgba(255,92,92,0.06); border:1px solid rgba(255,92,92,0.2); border-radius:12px; }
     .danger-zone-title { font-size:9px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:var(--danger); margin-bottom:10px; }
-    .btn-danger {
-      background:none; border:1px solid rgba(255,92,92,0.3); border-radius:10px;
-      padding:10px 16px; color:var(--danger); font-family:'Syne',sans-serif;
-      font-size:13px; font-weight:600; cursor:pointer; width:100%;
-    }
+    .btn-danger { background:none; border:1px solid rgba(255,92,92,0.3); border-radius:10px; padding:10px 16px; color:var(--danger); font-family:'Syne',sans-serif; font-size:13px; font-weight:600; cursor:pointer; width:100%; }
     .btn-danger:active { background:rgba(255,92,92,0.1); }
+
+    /* ── CONFETTIS ── */
+    #confetti-canvas {
+      position:fixed; inset:0; pointer-events:none;
+      z-index:999; width:100%; height:100%;
+    }
   </style>
 </head>
 <body>
+
+  <!-- CONFETTIS -->
+  <canvas id="confetti-canvas"></canvas>
 
   <!-- LOADER -->
   <div class="loader-screen" id="loaderScreen">
@@ -285,18 +197,12 @@
     <div class="profile-cards">
       <div class="profile-card" onclick="selectProfile('seb')">
         <div class="profile-avatar avatar-seb">S</div>
-        <div class="profile-info">
-          <div class="profile-name">Seb</div>
-          <div class="profile-desc">Mon PEA</div>
-        </div>
+        <div class="profile-info"><div class="profile-name">Seb</div><div class="profile-desc">Mon PEA</div></div>
         <div class="profile-arrow">→</div>
       </div>
       <div class="profile-card" onclick="selectProfile('pauline')">
         <div class="profile-avatar avatar-pauline">P</div>
-        <div class="profile-info">
-          <div class="profile-name">Pauline</div>
-          <div class="profile-desc">Mon PEA</div>
-        </div>
+        <div class="profile-info"><div class="profile-name">Pauline</div><div class="profile-desc">Mon PEA</div></div>
         <div class="profile-arrow">→</div>
       </div>
     </div>
@@ -314,8 +220,7 @@
       </div>
       <div class="header-right">
         <button class="theme-toggle" onclick="toggleTheme()">
-          <span id="themeIcon">☀️</span>
-          <span id="themeLabel">Clair</span>
+          <span id="themeIcon">☀️</span><span id="themeLabel">Clair</span>
         </button>
         <div class="header-date" id="headerDate"></div>
       </div>
@@ -327,6 +232,7 @@
     </div>
 
     <div class="scroll">
+      <!-- HERO -->
       <div class="hero">
         <div class="hero-label">Total versé</div>
         <div class="hero-amount"><span>€</span><span id="heroAmount">0</span></div>
@@ -339,6 +245,7 @@
         </div>
       </div>
 
+      <!-- STATS -->
       <div class="stats-row">
         <div class="stat-card">
           <div class="stat-label">Versements</div>
@@ -352,6 +259,19 @@
         </div>
       </div>
 
+      <!-- GRAPHIQUE -->
+      <div class="chart-card">
+        <div class="chart-header">
+          <div class="chart-title">Évolution du PEA</div>
+          <div class="chart-total" id="chartTotal"></div>
+        </div>
+        <div class="chart-wrap">
+          <canvas id="chartCanvas"></canvas>
+          <div class="chart-empty hidden" id="chartEmpty">Ajoute des versements pour voir le graphique</div>
+        </div>
+      </div>
+
+      <!-- ESTIMATION -->
       <div class="est-card">
         <div class="est-icon">🎯</div>
         <div>
@@ -361,6 +281,7 @@
         </div>
       </div>
 
+      <!-- HISTORY -->
       <div class="section-title">Historique</div>
       <div class="history-list" id="historyList">
         <div class="empty-state">Aucun versement enregistré</div>
@@ -378,18 +299,9 @@
     <div class="modal">
       <div class="modal-handle"></div>
       <div class="modal-title">Nouveau versement</div>
-      <div class="field">
-        <label>Montant (€)</label>
-        <input type="number" id="inputAmount" inputmode="decimal" placeholder="1 000" min="0" />
-      </div>
-      <div class="field">
-        <label>Date</label>
-        <input type="date" id="inputDate" />
-      </div>
-      <div class="field">
-        <label>Note (optionnel)</label>
-        <input type="text" id="inputNote" placeholder="Épargne mensuelle…" maxlength="40" />
-      </div>
+      <div class="field"><label>Montant (€)</label><input type="number" id="inputAmount" inputmode="decimal" placeholder="1 000" min="0" /></div>
+      <div class="field"><label>Date</label><input type="date" id="inputDate" /></div>
+      <div class="field"><label>Note (optionnel)</label><input type="text" id="inputNote" placeholder="Épargne mensuelle…" maxlength="40" /></div>
       <div class="modal-btns">
         <button class="btn-cancel" onclick="closeModal('addOverlay')">Annuler</button>
         <button class="btn-confirm" onclick="addVersement()">Enregistrer</button>
@@ -402,14 +314,8 @@
     <div class="modal">
       <div class="modal-handle"></div>
       <div class="modal-title" id="settingsTitle">Paramètres</div>
-      <div class="field">
-        <label>Solde de départ (€)</label>
-        <input type="number" id="inputSoldeDepart" inputmode="decimal" placeholder="50 000" min="0" />
-      </div>
-      <div class="field">
-        <label>Versement mensuel estimé (€)</label>
-        <input type="number" id="inputMonthly" inputmode="decimal" placeholder="500" min="0" />
-      </div>
+      <div class="field"><label>Solde de départ (€)</label><input type="number" id="inputSoldeDepart" inputmode="decimal" placeholder="50 000" min="0" /></div>
+      <div class="field"><label>Versement mensuel estimé (€)</label><input type="number" id="inputMonthly" inputmode="decimal" placeholder="500" min="0" /></div>
       <div class="settings-info" id="settingsInfo"></div>
       <div class="danger-zone">
         <div class="danger-zone-title">⚠ Zone danger</div>
@@ -423,12 +329,11 @@
   </div>
 
   <script type="module">
-    import { initializeApp }                          from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
+    import { initializeApp }                       from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
     import { getFirestore, doc, getDoc, setDoc,
              collection, addDoc, deleteDoc,
-             onSnapshot, query, orderBy }             from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
+             onSnapshot, query, orderBy, getDocs } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
 
-    // ── FIREBASE CONFIG ──
     const firebaseConfig = {
       apiKey:            "AIzaSyC1Twv9dZEhxONp9kdDjOKmAC_b66LmiQE",
       authDomain:        "pea-tracker-5f583.firebaseapp.com",
@@ -441,7 +346,6 @@
     const app = initializeApp(firebaseConfig);
     const db  = getFirestore(app);
 
-    // ── PROFILS ──
     const PROFILES = {
       seb:     { name:'Seb',     cls:'avatar-seb',     initial:'S' },
       pauline: { name:'Pauline', cls:'avatar-pauline', initial:'P' }
@@ -450,10 +354,10 @@
     let currentProfile  = null;
     let unsubscribeSnap = null;
     let profileSettings = { soldeDepart:0, monthly:0 };
+    let isFirstLoad     = true;
 
     // ── THEME ──
     const THEME_KEY = 'pea_theme';
-
     function applyTheme(theme) {
       if (theme === 'light') {
         document.documentElement.classList.add('light');
@@ -467,28 +371,198 @@
         document.querySelector('meta[name="theme-color"]').setAttribute('content','#0a0a0f');
       }
     }
-
-    window.toggleTheme = function() {
-      const newTheme = document.documentElement.classList.contains('light') ? 'dark' : 'light';
-      localStorage.setItem(THEME_KEY, newTheme);
-      applyTheme(newTheme);
+    window.toggleTheme = () => {
+      const t = document.documentElement.classList.contains('light') ? 'dark' : 'light';
+      localStorage.setItem(THEME_KEY, t);
+      applyTheme(t);
+      if (lastVersements) drawChart(lastVersements);
     };
 
-    // ── SYNC STATUS ──
+    // ── CONFETTIS ──
+    const confCanvas = document.getElementById('confetti-canvas');
+    const confCtx    = confCanvas.getContext('2d');
+    let confettiParticles = [];
+    let confettiRAF = null;
+
+    function launchConfetti() {
+      confCanvas.width  = window.innerWidth;
+      confCanvas.height = window.innerHeight;
+      confettiParticles = [];
+      const colors = ['#c9a84c','#e8c97a','#3ecf8e','#7de8b8','#ff6b9d','#a78bfa','#38bdf8'];
+      for (let i = 0; i < 120; i++) {
+        confettiParticles.push({
+          x:     Math.random() * confCanvas.width,
+          y:     Math.random() * confCanvas.height - confCanvas.height,
+          w:     Math.random() * 10 + 4,
+          h:     Math.random() * 6 + 3,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          vx:    (Math.random() - 0.5) * 3,
+          vy:    Math.random() * 4 + 2,
+          angle: Math.random() * Math.PI * 2,
+          spin:  (Math.random() - 0.5) * 0.2,
+          alpha: 1
+        });
+      }
+      if (confettiRAF) cancelAnimationFrame(confettiRAF);
+      animateConfetti();
+    }
+
+    function animateConfetti() {
+      confCtx.clearRect(0, 0, confCanvas.width, confCanvas.height);
+      confettiParticles.forEach(p => {
+        p.x     += p.vx;
+        p.y     += p.vy;
+        p.angle += p.spin;
+        if (p.y > confCanvas.height * 0.7) p.alpha -= 0.02;
+        confCtx.save();
+        confCtx.globalAlpha = Math.max(0, p.alpha);
+        confCtx.translate(p.x, p.y);
+        confCtx.rotate(p.angle);
+        confCtx.fillStyle = p.color;
+        confCtx.fillRect(-p.w/2, -p.h/2, p.w, p.h);
+        confCtx.restore();
+      });
+      confettiParticles = confettiParticles.filter(p => p.alpha > 0);
+      if (confettiParticles.length > 0) {
+        confettiRAF = requestAnimationFrame(animateConfetti);
+      } else {
+        confCtx.clearRect(0, 0, confCanvas.width, confCanvas.height);
+      }
+    }
+
+    // ── GRAPHIQUE ──
+    let lastVersements = null;
+    let chartRAF = null;
+
+    function drawChart(versements) {
+      const canvas = document.getElementById('chartCanvas');
+      const empty  = document.getElementById('chartEmpty');
+      const isLight = document.documentElement.classList.contains('light');
+
+      if (versements.length === 0) {
+        canvas.style.display = 'none';
+        empty.classList.remove('hidden');
+        document.getElementById('chartTotal').textContent = '';
+        return;
+      }
+      canvas.style.display = 'block';
+      empty.classList.add('hidden');
+
+      // Construire les points : cumul dans le temps
+      const sorted = [...versements].sort((a,b) => a.date.localeCompare(b.date));
+      const base   = profileSettings.soldeDepart;
+      let cumul    = base;
+      const points = [{ label:'Départ', value: base }];
+      sorted.forEach(v => {
+        cumul += v.amount;
+        const d = new Date(v.date + 'T12:00:00');
+        points.push({
+          label: d.toLocaleDateString('fr-FR',{month:'short',year:'2-digit'}),
+          value: cumul
+        });
+      });
+
+      // Ajuster canvas
+      const wrap = canvas.parentElement;
+      canvas.width  = wrap.clientWidth * window.devicePixelRatio;
+      canvas.height = wrap.clientHeight * window.devicePixelRatio;
+      canvas.style.width  = wrap.clientWidth + 'px';
+      canvas.style.height = wrap.clientHeight + 'px';
+
+      const ctx  = canvas.getContext('2d');
+      ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+      const W = wrap.clientWidth;
+      const H = wrap.clientHeight;
+      const PAD = { top:10, right:10, bottom:24, left:0 };
+      const gW  = W - PAD.left - PAD.right;
+      const gH  = H - PAD.top - PAD.bottom;
+
+      const MAX_LINE = 150000;
+      const minV = 0;
+      const maxV = Math.max(MAX_LINE, cumul);
+
+      const toX = i  => PAD.left + (i / (points.length - 1)) * gW;
+      const toY = v  => PAD.top  + gH - (v / maxV) * gH;
+
+      ctx.clearRect(0, 0, W, H);
+
+      // Ligne plafond 150k
+      const y150 = toY(MAX_LINE);
+      ctx.save();
+      ctx.setLineDash([4, 4]);
+      ctx.strokeStyle = isLight ? 'rgba(160,120,40,0.25)' : 'rgba(201,168,76,0.25)';
+      ctx.lineWidth   = 1;
+      ctx.beginPath();
+      ctx.moveTo(PAD.left, y150);
+      ctx.lineTo(W - PAD.right, y150);
+      ctx.stroke();
+      ctx.restore();
+
+      // Gradient de remplissage
+      const grad = ctx.createLinearGradient(0, PAD.top, 0, H);
+      grad.addColorStop(0, isLight ? 'rgba(160,120,40,0.18)' : 'rgba(201,168,76,0.2)');
+      grad.addColorStop(1, 'rgba(0,0,0,0)');
+
+      // Zone remplie
+      ctx.beginPath();
+      points.forEach((p, i) => {
+        const x = toX(i), y = toY(p.value);
+        i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      });
+      ctx.lineTo(toX(points.length - 1), H - PAD.bottom);
+      ctx.lineTo(PAD.left, H - PAD.bottom);
+      ctx.closePath();
+      ctx.fillStyle = grad;
+      ctx.fill();
+
+      // Courbe
+      ctx.beginPath();
+      ctx.lineWidth   = 2;
+      ctx.strokeStyle = isLight ? '#a07828' : '#e8c97a';
+      ctx.lineJoin    = 'round';
+      ctx.lineCap     = 'round';
+      points.forEach((p, i) => {
+        const x = toX(i), y = toY(p.value);
+        i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      });
+      ctx.stroke();
+
+      // Points + labels
+      points.forEach((p, i) => {
+        const x = toX(i), y = toY(p.value);
+        // dot
+        ctx.beginPath();
+        ctx.arc(x, y, 3, 0, Math.PI * 2);
+        ctx.fillStyle   = isLight ? '#a07828' : '#e8c97a';
+        ctx.fill();
+        // label date (sauf départ si trop serré)
+        if (i > 0 || points.length <= 4) {
+          ctx.fillStyle   = isLight ? 'rgba(26,22,18,0.35)' : 'rgba(240,237,230,0.3)';
+          ctx.font        = `${9 * window.devicePixelRatio / window.devicePixelRatio}px DM Mono, monospace`;
+          ctx.textAlign   = 'center';
+          ctx.fillText(p.label, x, H - PAD.bottom + 14);
+        }
+      });
+
+      // Total dans le header du graphique
+      document.getElementById('chartTotal').textContent = fmtEur(cumul) + ' €';
+    }
+
+    // ── SYNC ──
     function setSyncStatus(state, text) {
-      const dot = document.getElementById('syncDot');
-      dot.className = 'sync-dot ' + state;
+      document.getElementById('syncDot').className = 'sync-dot ' + state;
       document.getElementById('syncText').textContent = text;
     }
 
-    // ── FIRESTORE HELPERS ──
-    function settingsDocRef(profile)      { return doc(db, 'profiles', profile); }
-    function versementsColRef(profile)    { return collection(db, 'profiles', profile, 'versements'); }
-    function versementDocRef(profile, id) { return doc(db, 'profiles', profile, 'versements', id); }
+    // ── FIRESTORE ──
+    const settingsDocRef   = p    => doc(db, 'profiles', p);
+    const versementsColRef = p    => collection(db, 'profiles', p, 'versements');
+    const versementDocRef  = (p,id) => doc(db, 'profiles', p, 'versements', id);
 
     // ── SELECT PROFILE ──
     window.selectProfile = async function(profile) {
       currentProfile = profile;
+      isFirstLoad    = true;
       const p = PROFILES[profile];
 
       const avatar = document.getElementById('headerAvatar');
@@ -499,35 +573,34 @@
 
       document.getElementById('profileScreen').classList.add('hidden');
       document.getElementById('appScreen').classList.remove('hidden');
+      setSyncStatus('syncing','Chargement…');
 
-      setSyncStatus('syncing', 'Chargement…');
-
-      // Charger les paramètres
       try {
         const snap = await getDoc(settingsDocRef(profile));
         profileSettings = snap.exists()
-          ? { soldeDepart: snap.data().soldeDepart || 0, monthly: snap.data().monthly || 0 }
-          : { soldeDepart: 0, monthly: 0 };
-      } catch(e) {
-        profileSettings = { soldeDepart:0, monthly:0 };
-      }
+          ? { soldeDepart: snap.data().soldeDepart||0, monthly: snap.data().monthly||0 }
+          : { soldeDepart:0, monthly:0 };
+      } catch(e) { profileSettings = { soldeDepart:0, monthly:0 }; }
 
-      // Écouter les versements en temps réel
       if (unsubscribeSnap) unsubscribeSnap();
       const q = query(versementsColRef(profile), orderBy('date','desc'));
       unsubscribeSnap = onSnapshot(q,
-        (snapshot) => {
-          const versements = snapshot.docs.map(d => ({ id: d.id, ...d.data() }));
-          setSyncStatus('synced', 'Synchronisé');
+        snap => {
+          const versements = snap.docs.map(d => ({ id:d.id, ...d.data() }));
+          const isNew = !isFirstLoad && snap.docChanges().some(c => c.type === 'added');
+          if (isNew) launchConfetti();
+          isFirstLoad = false;
+          lastVersements = versements;
+          setSyncStatus('synced','Synchronisé');
           render(versements);
         },
-        (err) => { setSyncStatus('error', 'Erreur de connexion'); }
+        () => setSyncStatus('error','Erreur de connexion')
       );
     };
 
     window.backToProfiles = function() {
       if (unsubscribeSnap) { unsubscribeSnap(); unsubscribeSnap = null; }
-      currentProfile = null;
+      currentProfile = null; lastVersements = null;
       document.getElementById('appScreen').classList.add('hidden');
       document.getElementById('profileScreen').classList.remove('hidden');
     };
@@ -546,7 +619,6 @@
 
       document.getElementById('headerDate').textContent =
         new Date().toLocaleDateString('fr-FR',{day:'2-digit',month:'short',year:'numeric'});
-
       document.getElementById('heroAmount').textContent    = fmtEur(total);
       document.getElementById('heroRemain').textContent    = fmtEur(remain);
       document.getElementById('progressFill').style.width = pct + '%';
@@ -557,12 +629,12 @@
 
       let avgText = '—', months = 0;
       if (n > 0) {
-        const sum   = versements.reduce((s,v) => s + v.amount, 0);
+        const sum   = versements.reduce((s,v) => s+v.amount,0);
         const dates = versements.map(v => new Date(v.date));
         const minD  = new Date(Math.min(...dates));
         const maxD  = new Date(Math.max(...dates));
-        months  = Math.max(1, Math.round((maxD - minD) / (1000*60*60*24*30.4)) + 1);
-        avgText = fmtEur(sum / months) + ' €';
+        months  = Math.max(1, Math.round((maxD-minD)/(1000*60*60*24*30.4))+1);
+        avgText = fmtEur(sum/months) + ' €';
         document.getElementById('statMonths').textContent = months;
       }
       document.getElementById('statAvg').textContent = avgText;
@@ -572,7 +644,7 @@
         document.getElementById('estDate').textContent   = '🎉 Plafond atteint !';
         document.getElementById('estDetail').textContent = 'Félicitations, ton PEA est plein.';
       } else if (monthly > 0) {
-        const monthsLeft = Math.ceil(remain / monthly);
+        const monthsLeft = Math.ceil(remain/monthly);
         const target = new Date();
         target.setMonth(target.getMonth() + monthsLeft);
         document.getElementById('estDate').textContent   = target.toLocaleDateString('fr-FR',{month:'long',year:'numeric'});
@@ -582,6 +654,10 @@
         document.getElementById('estDetail').textContent = 'Configurer un versement mensuel estimé ↗';
       }
 
+      // Graphique
+      requestAnimationFrame(() => drawChart(versements));
+
+      // Historique
       const list = document.getElementById('historyList');
       if (n === 0) {
         list.innerHTML = '<div class="empty-state">Aucun versement enregistré</div>';
@@ -615,23 +691,19 @@
       const date   = document.getElementById('inputDate').value;
       const note   = document.getElementById('inputNote').value.trim();
       if (!amount || amount <= 0 || !date) return;
-      setSyncStatus('syncing', 'Enregistrement…');
+      setSyncStatus('syncing','Enregistrement…');
       try {
         await addDoc(versementsColRef(currentProfile), { amount, date, note });
         closeModal('addOverlay');
-      } catch(e) {
-        setSyncStatus('error', 'Erreur d\'enregistrement');
-      }
+      } catch(e) { setSyncStatus('error','Erreur d\'enregistrement'); }
     };
 
     window.deleteVersement = async function(id) {
       if (!confirm('Supprimer ce versement ?')) return;
-      setSyncStatus('syncing', 'Suppression…');
+      setSyncStatus('syncing','Suppression…');
       try {
         await deleteDoc(versementDocRef(currentProfile, id));
-      } catch(e) {
-        setSyncStatus('error', 'Erreur de suppression');
-      }
+      } catch(e) { setSyncStatus('error','Erreur de suppression'); }
     };
 
     // ── SETTINGS ──
@@ -639,7 +711,7 @@
       document.getElementById('inputSoldeDepart').value = profileSettings.soldeDepart || '';
       document.getElementById('inputMonthly').value     = profileSettings.monthly     || '';
       document.getElementById('settingsInfo').textContent = profileSettings.soldeDepart
-        ? `Solde de départ : ${fmtEur(profileSettings.soldeDepart)} €\nVersement estimé : ${profileSettings.monthly ? fmtEur(profileSettings.monthly) + ' €/mois' : 'Non défini'}`
+        ? `Solde de départ : ${fmtEur(profileSettings.soldeDepart)} €\nVersement estimé : ${profileSettings.monthly ? fmtEur(profileSettings.monthly)+'€/mois' : 'Non défini'}`
         : '';
       document.getElementById('settingsOverlay').classList.add('open');
     };
@@ -647,42 +719,31 @@
     window.saveSettings = async function() {
       profileSettings.soldeDepart = parseFloat(document.getElementById('inputSoldeDepart').value) || 0;
       profileSettings.monthly     = parseFloat(document.getElementById('inputMonthly').value)     || 0;
-      setSyncStatus('syncing', 'Sauvegarde…');
+      setSyncStatus('syncing','Sauvegarde…');
       try {
         await setDoc(settingsDocRef(currentProfile), profileSettings);
         closeModal('settingsOverlay');
-        // Re-render avec les nouveaux paramètres (le snapshot se chargera des versements)
-        const snap = await getDoc(settingsDocRef(currentProfile));
-        const q    = query(versementsColRef(currentProfile), orderBy('date','desc'));
-        const vSnap = await import("https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js")
-          .then(m => m.getDocs(q));
-        render(vSnap.docs.map(d => ({ id: d.id, ...d.data() })));
-        setSyncStatus('synced', 'Synchronisé');
-      } catch(e) {
-        setSyncStatus('error', 'Erreur de sauvegarde');
-      }
+        if (lastVersements) render(lastVersements);
+        setSyncStatus('synced','Synchronisé');
+      } catch(e) { setSyncStatus('error','Erreur de sauvegarde'); }
     };
 
     window.resetData = async function() {
       const name = PROFILES[currentProfile].name;
       if (!confirm(`Effacer TOUTES les données de ${name} ? Irréversible.`)) return;
-      setSyncStatus('syncing', 'Suppression…');
+      setSyncStatus('syncing','Suppression…');
       try {
-        const { getDocs } = await import("https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js");
-        const q    = query(versementsColRef(currentProfile));
-        const snap = await getDocs(q);
+        const snap = await getDocs(versementsColRef(currentProfile));
         await Promise.all(snap.docs.map(d => deleteDoc(d.ref)));
         profileSettings = { soldeDepart:0, monthly:0 };
         await setDoc(settingsDocRef(currentProfile), profileSettings);
         closeModal('settingsOverlay');
-        setSyncStatus('synced', 'Synchronisé');
-      } catch(e) {
-        setSyncStatus('error', 'Erreur');
-      }
+        setSyncStatus('synced','Synchronisé');
+      } catch(e) { setSyncStatus('error','Erreur'); }
     };
 
     // ── MODALS ──
-    window.closeModal   = id => document.getElementById(id).classList.remove('open');
+    window.closeModal   = id    => document.getElementById(id).classList.remove('open');
     window.closeOverlay = (e,id) => { if (e.target === document.getElementById(id)) window.closeModal(id); };
 
     document.addEventListener('keydown', e => {
@@ -693,9 +754,11 @@
       }
     });
 
+    // Redessiner le graphique si la fenêtre change de taille
+    window.addEventListener('resize', () => { if (lastVersements) drawChart(lastVersements); });
+
     // ── INIT ──
     applyTheme(localStorage.getItem(THEME_KEY) || 'dark');
-    // Cacher le loader et afficher les profils
     document.getElementById('loaderScreen').classList.add('hidden');
     document.getElementById('profileScreen').classList.remove('hidden');
   </script>
